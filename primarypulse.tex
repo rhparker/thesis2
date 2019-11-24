@@ -8,9 +8,9 @@
 
 \section{Proof of Lemma \ref{manifoldinH0}}
 
-Let $U = (u_1, \dots, u_{2m})$ and $Q(x; c_0) = (q_1(x), \dots, q_{2m}(x))$. We wish to write the zero-level set $H^{-1}(0; c)$ as a graph near $Q(0; c_0)$. We will do this using the IFT.
+Let $U = (u_1, \dots, u_{2m})$ and $Q(x; c_0) = (q_1(x), \dots, q_{2m}(x))$. We wish to write the zero-level set $H^{-1}(0; c)$ as a graph near $Q(0; c_0)$. We will do this using the implicit function theorem.
 
-By Hypothesis \ref{Qexistshyp}, $H(q_1(0), \dots, q_{2m}(0); c_0) = 0$ and $\nabla_U H(Q(0; c_0); c_0) \neq 0$. This implies that one of the $2m$ components of $\nabla_U H(Q(0; c_0); c_0)$ is nonzero. Renumbering the components of $Q(x)$ if necessary, we can without loss of generality take the first component of $\nabla_U H(Q(0); c_0)$ to be nonzero, i.e. $\partial_{u_1}H(q_1(0), \dots, q_{2m}(0); c_0) \neq 0$. We can use the IFT to solve $H(u_1, u_2 \dots, u_{2m}; c_0) = 0$ for $u_1$ in terms of $(u_2, \dots, u_{2m})$ and $c_0$ near $Q(0)$ and $c_0$.
+By Hypothesis \ref{Qexistshyp}, $H(q_1(0), \dots, q_{2m}(0); c_0) = 0$ and $\nabla_U H(Q(0; c_0); c_0) \neq 0$. This implies that one of the $2m$ components of $\nabla_U H(Q(0; c_0); c_0)$ is nonzero. Renumbering the components of $Q(x)$ if necessary, we can without loss of generality take the first component of $\nabla_U H(Q(0); c_0)$ to be nonzero, i.e. $\partial_{u_1}H(q_1(0), \dots, q_{2m}(0); c_0) \neq 0$. We can use the implicit function theorem to solve $H(u_1, u_2 \dots, u_{2m}; c_0) = 0$ for $u_1$ in terms of $(u_2, \dots, u_{2m})$ and $c_0$ near $Q(0)$ and $c_0$.
 
 Specifically, there exist open neighborhooods $V_1$ of $q_1(0)$ and $V_2$ of $(q_2(0), \dots, q_{2m}(0))$, $\delta > 0$, and a unique smooth function $g: V_2 \times (c_0 - \delta, c_0 + \delta) \rightarrow V_1$ such that $g(q_2(0), \dots, q_{2m}(0); c_0) = q_1(0)$ and for all $U \in V_2$ and $c \in (c_0 - \delta, c_0 + \delta)$, $H(g(U; c),U; c) = 0$. Our desired manifolds are then given by
 \begin{equation}\label{defMc}
@@ -68,7 +68,7 @@ We wish to show that for $c$ close to $c_0$, $W^s(0; c) \cap \Sigma$ and $W^u(0;
 K(v_u, v_s; c) = (v_u - h^s(0, v_s; c), v_s - h^u(0, v_u; c))
 \end{align*}
 Since $h^s(0, 0; c_0) = h^u(0, 0; c_0) = 0$, $K(0, 0, c_0) = 0$. Since $D_{v_u} h^u(0, 0; c_0) = D_{v_s} h^s(0, 0; c_0) = 0$, 
-$D_{(v_u, v_s)}K(0, 0; c_0) = I_{2m-2}$, which is invertible. Using the IFT, there exists an open neighborhood $W$ of $(0, 0) \in V^u \times V^s$, $\tilde{\delta}$ with $0 < \tilde{\delta} < \delta$, and a unique smooth function $g: (c_0 - \tilde{\delta}, c_0 + \tilde{\delta}) \rightarrow W$ such that $g(c_0) = (0, 0)$ and $K(g(c), c) = 0$ for all $c \in (c_0 - \tilde{\delta}, c_0 + \tilde{\delta})$.
+$D_{(v_u, v_s)}K(0, 0; c_0) = I_{2m-2}$, which is invertible. Using the implicit function theorem, there exists an open neighborhood $W$ of $(0, 0) \in V^u \times V^s$, $\tilde{\delta}$ with $0 < \tilde{\delta} < \delta$, and a unique smooth function $g: (c_0 - \tilde{\delta}, c_0 + \tilde{\delta}) \rightarrow W$ such that $g(c_0) = (0, 0)$ and $K(g(c), c) = 0$ for all $c \in (c_0 - \tilde{\delta}, c_0 + \tilde{\delta})$.
 
 Let $g(c) = (g_u(c), g_s(c)) \in V^u \times V^s$. Then for $c \in (c_0 - \tilde{\delta}, c_0 + \tilde{\delta})$, the unique intersection point of $W^s(0; c) \cap \Sigma$ and $W^u(0; c) \cap \Sigma$ is given by the smooth function
 \[

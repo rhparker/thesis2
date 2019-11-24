@@ -6,6 +6,8 @@
 	\chapter{The 5th order KdV equation: $n$-homoclinic solutions}
 \fi
 
+In this chapter, we discuss the existence and spectral stability of multi-pulse solutions to KdV5, using the general form derived in \cref{chapter:kdv5general}. We will be able to obtain a instability result, i.e. we can classify which multi-pulses have a positive, real eigenvalue. However, we will only be able to locate purely imaginary eigenvalues to leading order, which does not permit us to obtain a rigorous stability result. We will also discuss the existence of periodic multi-pulses, which resemble multi-pulses but are on a periodic domain. Spectral stability of these periodic multi-pulses remains an open problem, although we present strong numerical results in \cref{chapter:kdv5}.
+
 \section{Existence of multi-pulses}\label{sec:multiexistR}
 
 A multi-pulse is a localized, multi-modal solution to \cref{eqODE} which resembles multiple, well-separated copies of the primary pulse. Heuristically, we construct a multi-pulse by gluing together multiple copies of the primary pulse end-to-end. This is shown in \cref{fig:multipulse}.
@@ -40,7 +42,7 @@ The pulse distances $X_j$ are determined from the integers $m_j$ and the scaling
 \begin{theorem}[Existence of Multi-Pulses]\label{multipulseexistR}
 Assume Hypotheses \ref{Ehyp}, \ref{Hhyp}, \ref{hypeqhyp}, \ref{Qexistshyp}, and \ref{H0transversehyp}. Let $Q(x)$ be the transversely constructed, symmetric primary pulse solution to \eqref{genODE} from Hypothesis \ref{Qexistshyp}. Then there exists $\delta > 0$ such that the following holds. For any homoclinic parameterization $(m_1, \dots, m_{n-1})$, there exists $r_* = r_*(m_1, \dots, m_{n-1}) \in \mathcal{R}$ with $r_* > 0$ such that for any $r \in \mathcal{R}$ with $r \leq r_*$:
 \begin{enumerate}[(i)]
-\item There exists a unique $n$-pulse solution $Q_n$ to \cref{genODE} which resembles $n$ consecutive copies of $Q$. 
+\item There exists a unique $n$-pulse solution $Q_n(x)$ to \cref{genODE} which resembles $n$ consecutive copies of $Q(x)$. 
 \item The distances between consecutive copies of $Q(x)$ are $2 X_j(r)$, where
 \begin{align}\label{nhompeaks}
 X_j(r; m_j) &= \frac{1}{2 \alpha_0} |\log r| + \frac{1}{2\beta_0} t_j(r; m_j) + L_0 && j = 1, \dots, n-1
@@ -56,9 +58,9 @@ The $t_j(r; m_j): \mathcal{R} \rightarrow \R$ are smooth functions with $t_j(0; 
 
 \item We can write $Q_n(x)$ in piecewise form consisting of $2n$ pieces $\{ Q_j^\pm(x) : j = 1, \dots, n \}$, where $Q_j^-: [-X_{j-1}, 0] \rightarrow \R^{2m}$ and $Q_j^+: [0, X_j] \rightarrow \R^{2m}$, with $X_0 = X_n = \infty$. The pieces are joined together end-to-end as in \cite{Sandstede1998}. Each piece $Q_j^\pm(x)$ is a small perturbation of the primary pulse $Q(x)$ of the form
 \begin{equation}\label{Qpmexpansions}
-Q_j^\pm(x) = Q(x) + \tilde{Q}_j^\pm(x),
+Q_j^\pm(x) = Q(x) + \tilde{Q}_j^\pm(x).
 \end{equation}
-where for the remainder terms $\tilde{Q}_j^\pm(x)$ we have the estimates
+For the remainder terms $\tilde{Q}_j^\pm(x)$ we have the estimates
 \begin{equation}\label{Qpmestimates}
 \begin{aligned}
 \|\tilde{Q}_j^\pm\| &\leq C e^{-\alpha_0 X_{\min}} \\
@@ -119,7 +121,7 @@ First, we look at the essential spectrum. Since any traveling wave solution we a
 (\partial_x \calL_c''(0) - \lambda )v(x) = 
 (\partial_x^{2m+1} + c_{2m-1} \partial_x^{2m-1} + \dots + c_3 \partial_x^3 + c \partial_x - \lambda )v(x) = 0
 \]
-Using \cite[(3.1.20)]{Kapitula2013}, the essential spectrum is given by the curve
+By \cite[(3.1.20)]{Kapitula2013}, the essential spectrum is given by the curve
 \begin{align}\label{essspecR}
 \lambda(k) &= \{ (ik)^{2m+1} + c_{2m-1} (ik)^{2m-1} + \dots + c_3 (ik)^3 + c (ik) : k \in \R \}
 \end{align}
@@ -167,7 +169,7 @@ where $\tilde{V}(x) \in C^0(\R, \R^{2m+1})$ and we have
 \end{aligned}
 \end{equation}
 
-The matrix $A(q_n(x)) + \eta I$ is exponentially asymptotic to the constant coefficient matrix $A(0) + \eta I$. The eigenvalues of $A(0) + \eta I$ are shifted to the right by $\eta$, and the corresponding eigenvectors are unchanged. Using \ref{eigA0lemma}, $A(0) + \eta I$ is hyperbolic with $\Re|\nu| > \eta$ for all eigenvalues $\nu$. The equilibrium at $U = 0$ thus has a $(2m+1)$-dimensional unstable manifold and a $2m$-dimensional stable manifold. We will now be able to adapt the results of \cite{Sandstede1998}. 
+The matrix $A(q_n(x)) + \eta I$ is exponentially asymptotic to the constant coefficient matrix $A(0) + \eta I$. The eigenvalues of $A(0) + \eta I$ are shifted to the right by $\eta$, and the corresponding eigenvectors are unchanged. Using \cref{eigA0lemma}, $A(0) + \eta I$ is hyperbolic with $\Re|\nu| > \eta$ for all eigenvalues $\nu$. The equilibrium at $U = 0$ thus has a $(2m+1)$-dimensional unstable manifold and a $2m$-dimensional stable manifold. We will now be able to adapt the results of \cite{Sandstede1998}. 
 
 As in \cite{Sandstede1998}, we can decompose the tangent spaces of the stable and unstable manifolds at $Q(0)$ of the equilibrium at 0 as
 \begin{equation}\label{Tetadecomp}
@@ -246,7 +248,7 @@ These are reversed if $M < 0$
 \end{corollary}
 
 \begin{remark}\label{remark:eigrelation}
-It follows from \cref{remark:Hessianeigs} that the interaction eigenvalues $\{ \lambda_1^\pm, \dots, \lambda_{n-1}^\pm \}$ and the eigenvalues $\{ \mu_1, \dots, \mu_{n-1} \}$ of $\calE''(q_n)$ are related by
+It follows from \cref{remark:Hessianeigs} that the interaction eigenvalues $\{ \lambda_1^\pm, \dots, \lambda_{n-1}^\pm \}$ and the eigenvalues $\{ \mu_1, \dots, \mu_{n-1} \}$ of $\calE''(q_n)$ are related, to leading order, by
 \begin{align}\label{eigrelation}
 \lambda_j^\pm &= \pm \sqrt{ \frac{M_1}{M} \ell_j} && j = 1, \dots, n-1,
 \end{align}
@@ -259,13 +261,12 @@ Since the problem is no longer Hamiltonian when posed in an exponentially weight
 
 \section{Existence of periodic multipulses}
 
-Finally, we will prove the existence of periodic multi-pulses, which are multi-modal solutions to \cref{eqODE} on a periodic domain. Their spectral stabilty is still an open problem. Heuristically, we construct a periodic multi-pulse by gluing together multiple copies of the primary pulse end-to-end in a loop as shown in \cref{fig:permultipulse}.
+In this section, we will prove the existence of periodic multi-pulses, which are multi-modal solutions to \cref{eqODE} on a periodic domain. Their spectral stabilty is still an open problem. Heuristically, we construct a periodic multi-pulse by gluing together multiple copies of the primary pulse end-to-end in a loop as shown in \cref{fig:permultipulse}.
 \begin{figure}
 \includegraphics[width=10cm]{periodic/multipulseperiodic}
 \caption[Construction of periodic multi-pulses from primary pulse]{Periodic $n-$pulse solution.}
 \label{fig:permultipulse}
 \end{figure}
-
 From a spatial dynamics perspective, a periodic multi-pulse is a multi-loop periodic orbit solution $Q_n(x)$ to
 \begin{equation}\label{existgenODE}
 U'(x) = F(U(x); c)
@@ -489,7 +490,7 @@ are satisfied.
 
 \subsection{Lin's method}
 
-To use Lin's method, we will need some estimates similar to those in \cite[Lemma 3.1]{Sandstede1998}. Choose any $\alpha$ with $0 < \alpha < \alpha_0$. We need to do this since the estimate for $\partial_c Q(x)$ in \cref{transverseint} only holds with decay rate $\alpha_0 - \epsilon$ for any $\epsilon > 0$. Then we have the following estimates.
+To use Lin's method, we will need some estimates similar to those in \cite[Lemma 3.1]{Sandstede1998}. Choose any $\alpha$ with $0 < \alpha < \alpha_0$. Then we have the following estimates.
 
 % estimates lemma
 \begin{lemma}\label{lemma:weightedest}
@@ -502,11 +503,11 @@ We have the estimates
 \end{enumerate}
 where $X_{\min} = \min\{X_1, \dots, X_n\}$.
 \begin{proof}
-Since $A(Q(x))$ is smooth in $Q(x)$, the bound (i) follows from the estimates \cref{Qpmestimates} in \cref{multipulseexistR}. By \cref{transverseint},
+Since $A(Q(x))$ is smooth in $Q(x)$, the bound (i) follows from the estimates \cref{Qpmestimates} in \cref{multipulseexistR}. By \cref{Qcbound} from \cref{Qclocalhyp},
 \begin{equation}\label{Qcbound1}
 |\partial_c Q(x)| \leq C e^{-\alpha|x|}
 \end{equation}
-Using the same technique as in the proof of \ref{transverseint}, we can obtain the same bound for $\partial_c Q_i^\pm(x)$. Estimate (ii) follows from \cref{Qcbound1} together with the definitions of $H(x)$ and $\tilde{H}_i^\pm(x)$. Estimate (iii) follows from \cref{Qcbound1} together with the estimates from \cref{multipulseexistR}. For estimate (iv), we first write $D_i d$ as
+We can obtain the same bound for $\partial_c Q_i^\pm(x)$ using Lin's method as in \cite{SandstedeStrut,Sandstede1993}. Estimate (ii) follows from \cref{Qcbound1} together with the definitions of $H(x)$ and $\tilde{H}_i^\pm(x)$. Estimate (iii) follows from \cref{Qcbound1} together with the estimates from \cref{multipulseexistR}. For estimate (iv), we first write $D_i d$ as
 \begin{align*}
 D_i d &= d_{i+1} e^{-\eta X_i}[ Q_n'(-X_i) + \lambda \partial_c Q_n(-X_i)] 
 - d_i e^{\eta X_i}[ Q_n'(X_i) + \lambda \partial_c Q_n(X_i)]  \\
@@ -593,7 +594,7 @@ and the remainder matrix $R(\lambda)$ has the bound \cref{weightedRbound1}. A no
 Finally, we prove that the eigenvalues of $A_\eta$ do not depend on $\eta$. To do that, we show that $A_\eta$ is conjugate to $A_0$.
 
 \begin{lemma}\label{lemma:Aetaconj}
-There exists an invertible matrix $T(\eta)$ such that $T(\eta)^-1 A_\eta T(\eta) = A_0$.
+There exists an invertible matrix $T(\eta)$ such that $T(\eta)^{-1} A_\eta T(\eta) = A_0$.
 \begin{proof}
 Let 
 \[

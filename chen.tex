@@ -5,13 +5,15 @@
 	\chapter{Chen-McKenna suspension bridge equation}
 \fi
 
+This is work done in collaboration with Todd Kapitula (Calvin College) and has been published in preprint form in \cite[Secton 6]{kapitula2019}. Theorems involving the Hamiltonian-Krein index are due to Todd Kapitula; for their proofs, we will cite the appropriate result from \cite{kapitula2019}.
+
 \section{Background}
 
-Motivated by observations of traveling waves on suspension bridges, McKenna and Walter \cite{McKenna1990} proposed the model,
+In 1938, R. G. Cone, the chief engineer of the Golden Gate Bridge, observed that ``a wind of unusual high velocity was blowing through the Golden Gate with the direction normal to the axis of the bridge... the suspended structure of the bridge was undulating vertically in a wavelike motion of considerable amplitude'' \cite{McKenna1990}. Motivated by observations of traveling waves on suspension bridges, McKenna and Walter \cite{McKenna1990} proposed the model,
 \begin{equation}\label{susp}
 \partial_t^2u + \partial_x^4u + u^+ - 1 = 0,
 \end{equation}
-to describe waves propagating on an infinitely long suspended beam, where $u^+ = \max(u, 0)$. To reduce the complexity due to the nonsmooth term $u^+$, Chen and McKenna \cite{Chen1997} introduced the regularized equation,
+to describe waves propagating on an infinitely long suspended beam, where $u^+ = \max(u, 0)$. The beam bends under its own weight, and the term $u^+$ represents the restoring force. Since the beam is suspended from above, the restoring force is one-sided since it only counteracts downward deflections. To reduce the complexity due to the nonsmooth term $u^+$, Chen and McKenna \cite{Chen1997} introduced the regularized equation,
 \begin{equation}\label{susp2}
 \partial_t^2u + \partial_x^4u + \rme^{u-1} - 1 = 0.
 \end{equation}
@@ -191,55 +193,7 @@ where $d(c)$ is defined in \cite[equation (2.16)]{Grillakis1987}.
 \end{lemma}
 
 \begin{proof}
-We first check that the origin is an isolated eigenvalue. The essential spectrum of $\calA_0(U)$ is the same as that of $\calA_0(U_n)$, and is given by \cref{A0ess}, which is positive and bounded away from 0. By assumption, $\calA_0(U)$ has a single negative eigenvalue.
-
-We now use the HKI to complete the proof; in particular, the formulation as presented in equation \cite[(2)]{kapitula2019}. First, we note that,
-\[
-\left.\calA_1\right|_{\Span\{\partial_xU\}}=
-\langle-2c\partial_x\left(\partial_xU\right),\partial_xU\rangle=0,
-\]
-where the equality follows from the fact that the primary pulse is even. Since $\calA_2=\calI$ is positive definite, we can write,
-\[
-\begin{aligned}
-K_{\Ham}&=\rmn(\calA_0)-
-\rmn\left(\left.\left[\calI-\calA_1\calA_0^{-1}\calA_1\right]\right|_{\Span\{\partial_xU\}}\right)\\
-&=1-
-\rmn\left(\left.\left[\calI-\calA_1\calA_0^{-1}\calA_1\right]\right|_{\Span\{\partial_xU\}}\right),
-\end{aligned}
-\]
-for by assumption, $\rmn(\calA_0)=1$.
-
-Regarding the second term,
-\[
-\begin{aligned}
-\left.\left[\calI-\calA_1\calA_0^{-1}\calA_1\right]\right|_{\Span\{\partial_xU\}}&=
-\|\partial_xU\|^2-
-\langle(-2c\partial_x)\calA_0^{-1}(-2c\partial_x)\partial_xU,\partial_xU\rangle\\
-&=\|\partial_xU\|^2+
-2c\langle\partial_x\calA_0^{-1}(-2c\partial_x^2U),\partial_xU\rangle.
-\end{aligned}
-\]
-Going back to the existence equation \cref{CheneqODE} and differentiating with respect to $c$ yields,
-\[
-\calA_0(U)\partial_cU+2c\partial_x^2U=0\,\,\leadsto\,\,
-\calA_0(U)^{-1}(-2c\partial_x^2U)=\partial_cU.
-\]
-Substitution and changing the order of differentiation provides,
-\[
-\langle\partial_x\calA_0(U)^{-1}(-2c\partial_x^2U),\partial_xU\rangle=
-\langle\partial_c\partial_xU,\partial_xU\rangle=\frac{1}{2}\partial_c\|\partial_xU\|^2.
-\]
-In conclusion,
-\[
-\left.\left[\calI-\calA_1\calA_0^{-1}\calA_1\right]\right|_{\Span\{\partial_xU\}}=
-\|\partial_xU\|^2+c\,\partial_c\|\partial_xU\|^2=
-\partial_c\left( c\|\partial_xU\|^2 \right).
-\]
-
-We now have for the primary pulse,
-\[
-K_{\Ham}=1-\rmn\left[\partial_c\left( c\|\partial_xU\|^2 \right)\right].
-\]
+We first check that the origin is an isolated eigenvalue. The essential spectrum of $\calA_0(U)$ is the same as that of $\calA_0(U_n)$, and is given by \cref{A0ess}, which is positive and bounded away from 0. By assumption, $\calA_0(U)$ has a single negative eigenvalue. The proof is then completed using the HKI, following the proof of \cite[Lemma 6.6]{kapitula2019}.
 \end{proof}
 
 \subsection{$n$-pulse}
@@ -256,32 +210,7 @@ K_{\Ham}=n+n_\rms-1.
 \end{lemma}
 
 \begin{proof}
-From \cref{multiexist} part (b) and the definition of $n_\rms$, $\rmn[\calA_0(U_n)]=n+n_\rms$, so for the HKI,
-\[
-K_{\Ham}=n+n_\rms-
-\rmn\left(\left.\left[\calI-\calA_1\calA_0^{-1}\calA_1\right]\right|_{\Span\{\partial_xU_n\}}\right),
-\]
-where $\calA_0=\calA_0(U_n)$.
-In the proof of \cref{qstable} we saw that when the wave depends smoothly on $c$,
-\[
-\left.\left[\calI-\calA_1\calA_0^{-1}\calA_1\right]\right|_{\Span\{\partial_xU_n\}}=
-\partial_c\left(c\|\partial_x U_n\|^2\right).
-\]
-Since to leading order the $n$-pulse is $n$ copies of the original pulse, we have
-\[
-\|\partial_x U_n\|^2=n\|\partial_xU\|^2 + \mathcal{O}(e^{-\alpha X_{\mathrm{min}}}).
-\]
-Consequently, we can write
-\begin{align*}
-\partial_c\left(c\|\partial_x U_n\|^2\right) &=
-n\partial_c\left(c\|\partial_x U\|^2\right) + \mathcal{O}(e^{-\alpha X_{\mathrm{min}}})\\
-&=-nd''(c) + \mathcal{O}(e^{-\alpha X_{\mathrm{min}}}).
-\end{align*}
-Since $d''(c)>0$ by assumption, we have to leading order,
-\[
-\partial_c\left(c\|\partial_x U_n\|^2\right)<0.
-\]
-For sufficiently well-separated pulses the sign will not change even when incorporating the higher-order terms in the asymptotic expansion. The result now follows.
+The proof is given in \cite[Lemma 6.7]{kapitula2019}.
 \end{proof}
 
 We now locate the potentially unstable polynomial eigenvalues of the quadratic eigenvalue problem \cref{quadeig}. This will be accomplished through the Krein matrix. Briefly, the Krein matrix is square matrix-valued function $\vK_S(\lambda)$ associated with an eigenvalue problem that has the following properties. For

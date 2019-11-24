@@ -6,7 +6,7 @@
 	\chapter{Generalization}
 \fi
 
-In this chapter, we write the 5th order KdV equation in a general form, for which KdV5 will be a special case. First, we formulate the problem as a Hamiltonian PDE with certain symmetries. We then look for traveling wave solutions, which satisfy a related nonlinear in a moving reference frame. In particular, we are interested in pulses, which are localized traveling waves. To do this, we shift to a spatial dynamics perspective, in which pulses are homoclinic orbits. We discuss the existence of a primary pulse solution, which is a single, symmetric homoclinic orbit. We will use this framework in \cref{chapter:kdv5multi} when we consider multi-pulse and periodic multi-pulse solutions. All proofs will be deferred until the end of this chapter.
+In this chapter, we write the 5th order KdV equation in a general form, for which KdV5 will be a special case. First, we formulate the problem as a Hamiltonian PDE with certain symmetries. We then look for traveling wave solutions, which satisfy a related nonlinear ODE in a moving reference frame. In particular, we are interested in pulses, which are localized traveling waves. To do this, we shift to a spatial dynamics perspective, in which pulses are homoclinic orbits. We discuss the existence of a primary pulse solution, which is a single, symmetric homoclinic orbit. We will use this framework in \cref{chapter:kdv5multi} when we consider multi-pulse and periodic multi-pulse solutions. All proofs will be deferred until the end of this chapter.
 
 \section{Hamiltonian PDE}\label{sec:HamPDE}
 
@@ -200,11 +200,11 @@ For a specific $c_0 \in \R$ with $c_0 > 0$, $U = 0$ is a hyperbolic equilibrium 
 
 Let $W^s(0; c_0)$ and $W^u(0; c_0)$ be the stable and unstable manifolds of the equilibrium at 0, and let $E_0^s(c_0)$ and $E_0^u(c_0)$ be the stable and unstable eigenspaces of $DF(0; c_0)$. By reversibility, these spaces have dimension $m$. The stable and unstable manifolds are smooth since $F$ is smooth.
 
-\section{Existence of pulses}
+\section{Existence of pulses}\label{sec:genexist}
 
 \subsection{Primary pulse solution}\label{sec:primarypulse}
 
-We now address the existence of a primary pulse solution, which is a symmetric homoclinic orbit connecting the rest state equilibrium to itself. In general, the existence of such a solution is unknown, although in specific cases such as KdV5 we do have an existence result. Thus we will take the existence of a primary pulse solution as a hypothesis.
+We now address the existence of a primary pulse solution, which is a symmetric homoclinic orbit connecting the rest state equilibrium to itself. In general, the existence of such a solution is unknown, although in specific cases such as KdV5 we do have an existence result. Thus we will take the existence of a symmetric primary pulse solution as a hypothesis.
 
 \begin{hypothesis}\label{Qexistshyp}
 For the same $c_0$ as in \cref{hypeqhyp}, there exists a homoclinic orbit solution $Q(x; c_0) \in W^s(0) \cap W^u(0) \subset H^{-1}(0)$ to \cref{genODE}. In addition,
@@ -261,7 +261,7 @@ We can now prove the existence of homoclinic orbits $Q(x; c)$ for $c$ near $c_0$
 Assume \cref{Hhyp} and \cref{H0transversehyp}. There exists $\delta > 0$ such that for $c \in (c_0 - \delta, c_0 + \delta)$, the stable and unstable manifolds $W^s(0; c)$ and $W^u(0; c)$ have a one-dimensional transverse intersection in $H^{-1}(0; c)$ which is a homoclinic orbit $Q(x; c)$. The map $c \rightarrow Q(x; c)$ is smooth.
 \end{theorem}
 
-Since the derivative $\partial_c Q(x; c)$ will appear in our analysis, we take the following additional hypothesis.
+Since the derivative $\partial_c Q(x; c)$ will be important in our analysis, we take the following additional hypothesis.
 
 \begin{hypothesis}\label{Qclocalhyp}
 Let $\delta >0$ be as in \cref{transverseint}. Then for any $\epsilon > 0$, there exists $\delta_1 > 0$ with $\delta_1 < \delta$ such that for $c \in (c_0 - \delta_1, c_0 + \delta_1)$,
@@ -271,7 +271,7 @@ Let $\delta >0$ be as in \cref{transverseint}. Then for any $\epsilon > 0$, ther
 \end{hypothesis} 
 
 \begin{remark}
-It is possible to prove \cref{Qclocalhyp} using a contraction mapping argument on an exponentially weighted space. Since the proof is tedious, we will instead take the result as a hypothesis.
+It is possible to prove \cref{Qclocalhyp} using a contraction mapping argument on an exponentially weighted space. Since the proof is tedious, we will instead take this as a hypothesis.
 \end{remark}
  
 \noi From this point forward, we will fix $c = c_0$ For simplicity, we will use $c$ in place of $c_0$ and will omit the dependence on $c$ in our notation. 
@@ -382,7 +382,12 @@ Let $\tilde{Q}(x)$ be the primary pulse solution from \cref{sec:primarypulse}, a
 V'(x) = A(Q(x)) V(x) \label{vareq2} \\
 W'(x) = -A(Q(x))^* W(x) \label{adjvareq2}
 \end{align}
-where we reuse the same notation $V$ and $W$ for convenience. Since $(\partial_x \calL(q))\partial_x q = 0$ and $(\partial_x \calL(q))(-\partial_c q) = \partial_x q$, it follows that 
+where we reuse the same notation $V$ and $W$ for convenience. Since 
+\begin{align}
+(\partial_x \calL(q))\partial_x q &= 0 
+(\partial_x \calL(q))(-\partial_c q) &= \partial_x q,
+\end{align}
+it follows that 
 \begin{align}
 (\partial_x Q(x))' &= A(Q(x))(\partial_x Q(x)) \label{Qprimevarsol} \\
 (\partial_c Q(x))' &= A(Q(x))(\partial_c Q(x)) + B(\partial_x Q(x))\label{Qcvarsol}
@@ -406,7 +411,7 @@ T_{Q(0)}W^u(0) &= \R Q'(0) \oplus Y^- \\
 Since $\dim \R Q'(0) \oplus Y^+ \oplus Y^- = 2m-1$, there we need two more directions to span $\R^{2m+1}$. To find these, we will use the following lemma.
 
 \begin{lemma}\label{varadjsolutions}
-There exist two linearly independent, bounded solutions $\Psi(x)$ and $\Psi^c(x)$ to \eqref{adjvareq2}.
+There exist two linearly independent, bounded solutions $\Psi(x)$ and $\Psi^c(x)$ to the adjoint variational equation \eqref{adjvareq2}.
 	\begin{enumerate}[(i)]
 	\item $\Psi(x)$ is the exponentially localized solution
 	\begin{equation}\label{psicomponents}
@@ -418,11 +423,14 @@ There exist two linearly independent, bounded solutions $\Psi(x)$ and $\Psi^c(x)
 	\Psi^c(x) = W_0
 	\end{equation}
 	\end{enumerate}
-	Any other bounded solution to \eqref{adjvareq2} is a linear combination of these. Finally, $\Psi(0), \Psi^c(0) \perp \R Q'(0) \oplus Y^+ \oplus Y^-$.
+	Any other bounded solution to \eqref{adjvareq2} is a linear combination of these. Finally
+	\[
+	\Psi(0), \Psi^c(0) \perp \R Q'(0) \oplus Y^+ \oplus Y^-.
+	\]
 \end{lemma}
 
 \begin{remark}\label{remark:psinotation}
-We note that for convenience we have used the notation $Q(x)$ and $\Psi(x)$ in both \cref{sec:primarypulse} and \cref{sec:genspectrum} to denote the primary pulse and the localized solution to the adjoint variational equation. Since we will be considering the existence and the stability problem separately, this should not cause confusion.
+We note that for convenience we have used the notation $Q(x)$ and $\Psi(x)$ in both \cref{sec:genexist} and \cref{sec:genspectrum} to denote the primary pulse and the localized solution to the adjoint variational equation. Since we will be considering the existence and the stability problem separately, this should not cause confusion.
 \end{remark}
 
 Using Lemma \ref{nondegenlemma} and Lemma \ref{varadjsolutions}, we can decompose $\R^{2m+1}$ as  
