@@ -1,0 +1,349 @@
+\documentclass[thesis2.tex]{subfiles}
+
+\begin{document}
+
+\iffulldocument\else
+	\chapter{KdV5}
+\fi
+
+\section{Proof of Lemma \ref{manifoldinH0}}
+
+Let $U = (u_1, \dots, u_{2m})$ and $Q(x; c_0) = (q_1(x), \dots, q_{2m}(x))$. We wish to write the zero-level set $H^{-1}(0; c)$ as a graph near $Q(0; c_0)$. We will do this using the IFT.
+
+By Hypothesis \ref{Qexistshyp}, $H(q_1(0), \dots, q_{2m}(0); c_0) = 0$ and $\nabla_U H(Q(0; c_0); c_0) \neq 0$. This implies that one of the $2m$ components of $\nabla_U H(Q(0; c_0); c_0)$ is nonzero. Renumbering the components of $Q(x)$ if necessary, we can without loss of generality take the first component of $\nabla_U H(Q(0); c_0)$ to be nonzero, i.e. $\partial_{u_1}H(q_1(0), \dots, q_{2m}(0); c_0) \neq 0$. We can use the IFT to solve $H(u_1, u_2 \dots, u_{2m}; c_0) = 0$ for $u_1$ in terms of $(u_2, \dots, u_{2m})$ and $c_0$ near $Q(0)$ and $c_0$.
+
+Specifically, there exist open neighborhooods $V_1$ of $q_1(0)$ and $V_2$ of $(q_2(0), \dots, q_{2m}(0))$, $\delta > 0$, and a unique smooth function $g: V_2 \times (c_0 - \delta, c_0 + \delta) \rightarrow V_1$ such that $g(q_2(0), \dots, q_{2m}(0); c_0) = q_1(0)$ and for all $U \in V_2$ and $c \in (c_0 - \delta, c_0 + \delta)$, $H(g(U; c),U; c) = 0$. Our desired manifolds are then given by
+\begin{equation}\label{defMc}
+M(c) = \{ (g(U; c), U; c) : U \in V_2 \}
+\end{equation}
+for $c \in (c_0 - \delta, c_0 + \delta)$. These manifold are $(2m-1)-$dimensional, are smooth since $H$ is smooth, and are contained in $H^{-1}(0; c_0)$. Taking $U = (q_2(0), \dots, q_{2m}(0))$ and $c = c_0$ in \eqref{defMc}, $M(c_0)$ contains $Q(0; c_0)$.
+
+\section{Proof of Theorem \ref{transverseint}}
+
+This is a straightforward consequence of Lemma \ref{manifoldinH0}, the transverse intersection of $W^s(0; c_0)$ and $W^u(0; c_0)$ in $M(c_0) \subset H^{-1}(0; c_0)$ from Hypothesis \ref{H0transversehyp}, the smoothness of $F$, and the implicit function theorem. 
+
+Let $\delta$ be as in Lemma \ref{manifoldinH0}, and for convenience, let $Q_0 = Q(0; c_0)$. Since we will be working entirely in the $(2m-1)$-dimensional manifolds $M(c)$, we will choose a local coordinate system to work in. To do this, we will write $M(c)$ as a graph over the tangent space of $M(c_0)$ in the following way. Since $W^s(0; c_0)$ and $W^u(0; c_0)$ in $M(c_0)$ intersect transversely in $M(c_0)$, and we have shown that this intersection is one-dimensional, we can write the three tangent spaces at $Q_0$ as follows.
+\begin{align*}
+T_{Q_0}W^u(0; c_0) &= V \oplus V^u \\
+T_{Q_0}W^s(0; c_0) &= V \oplus V^s \\
+T_{Q_0}M(c_0) &= T_{Q_0}W^u(0; c_0) 
++ T_{Q_0}W^s(0; c_0) = V \oplus V^u \oplus V^s
+\end{align*}
+
+Since $F(U; c)$ is smooth in $U$ and $c$, the stable and unstable manifolds $W^s(0; c)$ and $W^u(0; c)$ are also smooth in $c$ by the stable manifold theorem and smooth dependence of solutions to \eqref{genODE} on parameters. Thus for $c$ sufficiently close to $c_0$, $W^s(0; c)$ and $W^u(0; c)$ will both intersect $M(c)$. 
+
+First, we write $M(c_0)$ as a graph over its own tangent space. There exists $r > 0$ such that for $|v|, |v_u|, |v_s| < r$ and $c \in (c_0 - \delta, c_0 + \delta)$ (shrinking $\delta$ if needed), 
+\begin{align*}
+M(c) = Q_0 + v + v_u + v^s + h(v, v_u, v_s; c)
+\end{align*}
+where $h: V \times V^u \times V^s \times (c_0 - \delta, c_0 + \delta) \rightarrow \R^{2m}$ is smooth, $h(0,0,0; c_0) = 0$ and $D_{(v, v_u, v_s)} h(0, 0, 0; c_0) = 0$.
+
+Using this, we can write $W^s(0; c)$ and $W^u(0; c)$ as graphs over the their tangent spaces. Shrinking $r$ and $\delta$ if needed, there exist smooth functions $h^u: V \times V^u \times \R \rightarrow V^s$ and $h^s: V \times V^s \times \R V^u$ such that 
+\begin{equation}\label{Wparam1}
+\begin{aligned}
+W^u(0; c) &= Q_0 + \{ v + v_u + h^u(v, v_u; c) + h(v, v_u, h^u(v, v_u; c); c): |v|, |v_u| \leq r, c \in (c_0 - \delta, c_0 + \delta) \} \\
+W^s(0; c) &= Q_0 + \{ v + h^s(v, v_s; c) + v_s + h(v, h^s(v, v_s; c), v_s; c): |v|, |v_s| \leq r, c \in (c_0 - \delta, c_0 + \delta)  \}
+\end{aligned}
+\end{equation}
+where
+\begin{align*}
+h^s(0, 0; c_0) &= h^u(0, 0; c_0) = 0 \\
+D_{(v, v_u)} h^u(0, 0; c_0) &= D_{(v, v_s)}  h^s(0, 0; c_0) = 0
+\end{align*}
+
+Let $\Sigma$ be the hyperplane plane passing through $Q_0$ with no component in $V^c$, i.e.
+\[
+\Sigma = Q_0 + V^s + V^u
+\]
+To obtain a unique intersection point, we will consider the intersection of the stable and unstable manifolds to $\Sigma$. Since the restriction maps $(v, v_s) \mapsto v_s$ and $(v, y^-) \rightarrow y^-$ are smooth, $W^u(0; c) \cap \Sigma$ and $W^s(0; c) \cap \Sigma$ are smooth $(m-1)-$dimensional manifolds parameterized by
+\begin{equation}\label{Wparam2}
+\begin{aligned}
+W^u(0; c) \cap \Sigma &= Q_0 + \{ v_u + h^u(0, v_u; c) + h(0, v_u, h^u(0, v_u; c); c): |v_u| \leq r, c \in (c_0 - \delta, c_0 + \delta) \} \\
+W^s(0; c) \cap \Sigma &= Q_0 + \{ h^s(0, v_s; c) + v_s + h(0, h^s(0, v_s; c), v_s; c): |v_s| \leq r, c \in (c_0 - \delta, c_0 + \delta) \}
+\end{aligned}
+\end{equation}
+
+We wish to show that for $c$ close to $c_0$, $W^s(0; c) \cap \Sigma$ and $W^u(0; c) \cap \Sigma$ have a unique point of intersection. Looking at \eqref{Wparam2}, it suffices to solve $K(v_u, v_s; c) = 0$, where $K: V^u \times V^s \times \R \rightarrow V^u \times V^s$ is defined by
+\begin{align*}
+K(v_u, v_s; c) = (v_u - h^s(0, v_s; c), v_s - h^u(0, v_u; c))
+\end{align*}
+Since $h^s(0, 0; c_0) = h^u(0, 0; c_0) = 0$, $K(0, 0, c_0) = 0$. Since $D_{v_u} h^u(0, 0; c_0) = D_{v_s} h^s(0, 0; c_0) = 0$, 
+$D_{(v_u, v_s)}K(0, 0; c_0) = I_{2m-2}$, which is invertible. Using the IFT, there exists an open neighborhood $W$ of $(0, 0) \in V^u \times V^s$, $\tilde{\delta}$ with $0 < \tilde{\delta} < \delta$, and a unique smooth function $g: (c_0 - \tilde{\delta}, c_0 + \tilde{\delta}) \rightarrow W$ such that $g(c_0) = (0, 0)$ and $K(g(c), c) = 0$ for all $c \in (c_0 - \tilde{\delta}, c_0 + \tilde{\delta})$.
+
+Let $g(c) = (g_u(c), g_s(c)) \in V^u \times V^s$. Then for $c \in (c_0 - \tilde{\delta}, c_0 + \tilde{\delta})$, the unique intersection point of $W^s(0; c) \cap \Sigma$ and $W^u(0; c) \cap \Sigma$ is given by the smooth function
+\[
+P(c) = Q_0 + g_u(c) + g_s(c) + h(0, g_u(c), g_s(c); c)
+\]
+Using $P(c)$ as the initial condition at $x = 0$, we obtain a unique solution $Q(x; c)$ to \eqref{genODE}. Since $P(c)$ is in both $W^s(0; c)$ and $W^u(0; c)$, $Q(x; c)$ is a homoclinic orbit. Since $P(c)$ and $F(U; c)$ are smooth in $c$, the map $c \rightarrow Q(x; c)$ is smooth.
+
+\section{Proof of Lemma \ref{psiform}}
+
+First, we prove a result lemma relating solutions of the adjoint of an $n$-th order linear ODE to solutions of the adjoint problem when written as a first order system in the standard way. This will allow us to determine the final component of $\Psi(x)$.
+
+\begin{lemma}\label{adjointlemma}
+Consider the $n$-th order linear ODE 
+\begin{equation}\label{linODE}
+\partial_x^n u(x) + \sum_{k=0}^{n-1}g_k(x) \partial_x^k u(x) = 0
+\end{equation}
+which we can write as a first order system in the standard way as
+\begin{equation}\label{linODEsys}
+U'(x) = A(x)U(x)
+\end{equation}
+where
+\begin{equation}\label{Axform}
+A(x) = \begin{pmatrix}
+0 & 1 & 0 & \dots & 0 & 0 \\
+0 & 0 & 1 & \dots & 0 & 0 \\
+& &  & \ddots &  & & \\
+0 & 0 & 0 & \dots & 0 & 1 \\
+-g_0(x) & -g_1(x) & -g_2(x) &
+ \dots & -g_{n-2}(x) & -g_{n-1}(x)
+\end{pmatrix}
+\end{equation}
+Then if $W(x) = (w_1(x), \dots, w_n(x))$ solves the adjoint system
+\begin{equation}\label{adjODEsys}
+W'(x) = -[A(x)]^* W(x),
+\end{equation}
+$w_n(x)$ solves the adjoint linear ODE
+\begin{equation}\label{adjODE}
+(-1)^n \partial_x^n w(x) + \sum_{k=0}^{n-1} (-1)^k \partial_x^k( g_k(x) w(x)) = 0
+\end{equation}
+and the remaining entries of $W(x)$ are given by
+\begin{align}\label{adjWform}
+w_r(x) &= (-1)^{n-r} \partial_x^{n-r}w_n(x) + \sum_{k=r}^{n-1} (-1)^{k-r} \partial_x^{k-r}(g_k(x) w_n(x)) && r = 1, \dots n-1
+\end{align}
+\begin{proof}
+The adjoint system is given by
+\begin{equation*}
+\begin{pmatrix}
+w_1'(x) \\ w_2'(x) \\ w_3'(x) \\ \vdots \\ w_n'(x)
+\end{pmatrix} = \begin{pmatrix}
+0 &  0 & 0  & \dots & 0 & g_0(x) \\
+0 & -1 & 0  & \dots & 0 & g_1(x) \\
+0 &  0 & -1 & \dots & 0 & g_2(x) \\
+& &  & \ddots &  & & \\
+0 & 0 & 0 & \dots  & -1 & g_{n-1}(x) \\
+\end{pmatrix}
+\begin{pmatrix}
+w_1(x) \\ w_2(x) \\ w_3(x) \\ \vdots \\ w_n(x)
+\end{pmatrix}
+\end{equation*}
+which gives us the system of $n$ equation 
+\begin{align*}
+w_1'(x) &= g_0(x) w_n(x) \\
+w_2'(x) &= -w_1(x) + g_1(x) w_n(x) \\
+\vdots \\
+w_{n-1}'(x) &= -w_{n-2}(x) + g_{n-2}(x) w_n(x) \\
+w_n'(x) &= -w_{n-1}(x) + g_{n-1}(x) w_n(x) \\
+\end{align*}
+Suppressing the dependence on $x$ for convenience of notation, we rearrange this to get
+\begin{align*}
+0 &= -w_1' + g_0 w_n \\
+w_1 &= -w_2' + g_1 w_n \\
+w_2 &= -w_3' + g_2 w_n \\
+\vdots \\
+w_{n-2} &= -w_{n-1}' + g_{n-2} w_n \\
+w_{n-1} &= -w_n' + g_{n-1} w_n \\
+\end{align*}
+Differentiate the $w_{n-1}$ equation to get $w_{n-1}' = -\partial_x^2 w_n + \partial_x(g_{n-1}w_n)$ and substitite it into the $w_{n-2}$ equation to get
+\begin{align*}
+w_{n-2} &= \partial_x^2 w_n - \partial_x(g_{n-1} w_n) + g_{n-2} w_n
+\end{align*}
+Differentiate this and substitute it into the $w_{n-3}$ equation to get
+\[
+w_{n-3} = -\partial_x^3 w_n + \partial_x^2(g_{n-1} w_n) - \partial_x(g_{n-2} w_n) + g_{n-3} w_n
+\]
+Continuing this process, we have the general expression for $w_r$
+\begin{align*}
+w_r &= (-1)^{n-r} \partial_x^{n-r}w_n + \sum_{k=r}^{n-1} (-1)^{k-r} \partial_x^{k-r}(g_k w_n) && r = 1, \dots n-1
+\end{align*}
+When we reach the $w_1$ (after $n-1$ iterations), we have
+\[
+w_1 = (-1)^{n-1} \partial_x^{n-1} w_n + \sum_{k=1}^{n-1} (-1)^{k-1} \partial_x^{k-1}(g_k w_n)
+\]
+Differentiate this once more, and substitute it into the first equation $0 = -w_1' + g_0 w_n$ to get 
+\begin{align*}
+0 &= (-1)^{n} \partial_x^{n} w_n + \sum_{k=1}^{n-1} (-1)^{k} \partial_x^{k}(g_k w_n) + g_0 w_n \\
+&= (-1)^{n} \partial_x^{n} w_n + \sum_{k=0}^{n-1} (-1)^{k} \partial_x^{k}(g_k w_n)
+\end{align*}
+which is identical to adjoint linear ODE \eqref{adjODE}. Thus $w_n$ is a solution to \eqref{adjODE}.
+\end{proof}
+\end{lemma}
+
+We now turn to the proof of Lemma \ref{psiform}. Since \eqref{genODE} is Hamiltonian, $\langle F(Q(x)), \nabla H(Q(x)) \rangle = 0$ for all $x$. Taking the gradient of this and using known vector calculus identities,
+\begin{align*}
+0 &= \nabla \langle F(Q(x)), \nabla H(Q(x)) \rangle \\
+&= D F(Q(x))^* \nabla H(Q(x)) + D^2 H(Q(x))^* F(Q(x)) \\
+&= D F(Q(x))^* \nabla H(Q(x)) + D^2 H(Q(x)) Q'(x) \\
+&= D F(Q(x))^* \nabla H(Q(x)) + \frac{d}{dx} \nabla H(Q(x))
+\end{align*}
+since the Hessian matrix is self-adjoint. Rearranging this,
+\begin{equation*}
+\frac{d}{dx} \nabla H(Q(x)) = -D F(Q(x))^* \nabla H(Q(x)) 
+\end{equation*}
+thus $\nabla H(Q(x))$ is a solution to the adjoint variational equation \eqref{adjvareq1}. Since $\nabla H$ is continuous and $Q(x)$ is bounded (it decays exponentially to 0 at $\pm \infty$), $\nabla H(Q(x))$ is bounded as well. By Hypothesis \cref{H0transversehyp}, there is a unique such solution. It follows that $\Psi(x) = \nabla H(Q(x))$.
+
+For the symmetry relation, we will show that $R \Psi(-x)$ is a also a solution to \eqref{adjvareq1}. Using \eqref{genODErevDF} and the symmetry of the primary pulse $Q(x)$, 
+\begin{align*}
+[R \Psi(-x)]' &= -R \Psi'(-x) \\
+&= -R DF(Q(-x)) \Psi(-x) \\
+&= -R DF(RQ(x)) \Psi(-x) \\
+&= -R [-RDF(Q(x))R] \Psi(-x) \\
+&= DF(Q(x))R \Psi(-x)
+\end{align*}
+Thus by uniqueness, $\Psi(x) = R \Psi(-x)$, from which it follows that $\Psi(-x) = R \Psi(x)$.
+
+To determine the last component of $\Psi(x)$, we note that the variational equation $V'(x) = DF(Q(x)) V(x)$ corresponds to the linear ODE 
+\begin{equation}\label{var1}
+\calE''(q(x))v(x) = 0.
+\end{equation}
+Since the differential operator $\calE''(q(x))$ has an isolated term $\partial_x^{2m}$ and all other derivative terms are lower order, equation \eqref{var1} is of the form \eqref{linODE}. By Lemma \ref{adjointlemma}, $\Psi_{2m}(x)$ is a solution to $[\calE''(q(x))]^* w(x) = 0$. Since the operator $\calE''(q(x))$ is self-adjoint, $\Psi_{2m}(x)$ solves equation \eqref{var1}. Since $q'(x)$ is a solution to \eqref{var1}, we can take $\Psi_{2m}(x) = q'(x)$.
+
+\section{Proof of Lemma \ref{eigadjoint}}
+
+For part (i), 
+\begin{align*}
+\dfrac{d}{dx}\langle V(x), W(x) \rangle &= 
+\langle V'(x), W(x) \rangle + \langle V(x), W'(x) \rangle \\
+&= \langle A(x)V(x), W(x) \rangle + \langle V(x), -A(x)^* W(x) \rangle \\
+&= \langle A(x)V(x), W(x) \rangle - \langle A(x)V(x), W(x) \rangle \\
+&= 0
+\end{align*}
+
+For part (ii), let $|W(x)| \leq K$ and $V(x) \rightarrow 0$ as $x \rightarrow \infty$, By (i), $\langle V(x), W(x) \rangle = c$, where $c$ is a constant. Taking $x \rightarrow \infty$ and using the Cauchy-Schwartz inequality and the continuity of the norm,
+\begin{align*}
+|c| &= \left| \lim_{x\rightarrow \infty} \langle V(x), W(x) \rangle \right| \\
+&= \lim_{x\rightarrow \infty} \left| \langle V(x), W(x) \rangle \right| \\
+&\leq \lim_{x\rightarrow \infty} |V(x)||W(x)| \\
+&\leq K \lim_{x\rightarrow \infty} |V(x)| \\
+&= 0
+\end{align*}
+
+For part (iii), take the derivative of the expression $\Phi(y, x)\Phi(x, y) = I$ with respect to $y$ to get
+\begin{align*}
+0 &= \left(\frac{d}{dy}\Phi(y, x)\right) \Phi(x, y) +
+\Phi(y, x)\left(\frac{d}{dy}\Phi(x, y)\right) \\
+&= A(y)\Phi(y, x) \Phi(x, y) +
+\Phi(y, x)\left(\frac{d}{dy}\Phi(x, y)\right) \\
+&= A(y) + \Phi(y, x)\left(\frac{d}{dy}\Phi(x, y)\right) 
+\end{align*}
+Rearrange this to get
+\begin{align*}
+\Phi(y, x)\left(\frac{d}{dy}\Phi(x, y)\right) &= -A(y) \\
+\frac{d}{dy}\Phi(x, y) &= -\Phi(x, y) A(y) 
+\end{align*}
+Taking the transpose of both sides, we get
+\begin{align*}
+\frac{d}{dy}\Phi(x, y)^* &= -A(y)^* \Phi(x, y)^*  
+\end{align*}
+from which (iii) follows.
+
+\subsection{Proof of Lemma \ref{eigA0lemma}}
+
+Before we prove Lemma \ref{eigA0lemma}, we will prove a general result from finite dimensional linear algebra.
+
+\begin{lemma}\label{kernelprojlemma}
+Let $A$ be an $n \times n$ diagonalizable matrix with simple kernel spanned by $v$, and let $\ker A^* = \text{span}(w)$. Then 
+\begin{enumerate}[(i)]
+\item $\langle v, w \rangle \neq 0$.
+\item Having chosen the scaling in part (i), the projection on the kernel of $A$ is given by
+\begin{equation}\label{PkerA}
+P_{\ker A} = \frac{ \langle w, \cdot \rangle v }{\langle w, v \rangle }
+\end{equation}
+\end{enumerate}
+\begin{proof}
+For part (i), if $\langle v, w \rangle = 0$, then $v \perp \ker A^*$, thus by the Fredholm alternative we can solve $A u = v$. This is not possible since $A$ has simple kernel.
+
+For part (ii), Let $0, \lambda_2, \dots, \lambda_n$ be the eigenvalues (with multiplicity) of $A$ with corresponding eigenvectors $v, v_2, \dots, v_n$. Let $P$ be defined by the RHS of \eqref{PkerA}.
+
+First, let $u \in \ker A$. Then $u = \alpha v$ for $\alpha \in \R$, thus 
+\[
+P u = \frac{ \langle w, \alpha v \rangle v }{\langle w, v \rangle } = \frac{ \alpha \langle w, v \rangle v}{\langle w, v \rangle } = \alpha v = u
+\]
+
+Next, let $u \in R^n$. Since $A$ is diagonalizable, the eigenfunctions form a basis for $\R^n$, write $u$ in the eigenbasis as
+\[
+u = \alpha v + \sum_{k=2}^n \alpha_k v_k
+\]
+Choose $k \in 2, \dots, n$ and note that $\lambda_k \neq 0$since the kernel of $A$ is simple and $A v_k = \lambda_k v_k$. Then we have
+\begin{align*}
+\langle w, v_k \rangle &= \langle w, \frac{1}{\lambda_k}\lambda_k v_k \rangle \\
+&= \langle w, \frac{1}{\lambda_k} A v_k \rangle \\
+&= \langle w, A \frac{1}{\lambda_k} v_k \rangle \\
+&= \langle A^* w, \frac{1}{\lambda_k} v_k \rangle \\
+&= 0
+\end{align*}
+Thus we have $P u = \alpha v$.
+\end{proof}
+\end{lemma}
+
+We now turn to the proof of Lemma \ref{eigA0lemma}. Let $p_1(\nu)$ and $p_2(\nu)$ be the characteristic polynomials of $DF(0)$ and $A(0)$ (respectively). From \eqref{defAphi} and \eqref{defDF}, $A(0)$ is the block matrix
+\[
+A(0) = \begin{pmatrix}
+DF(0) & E \\
+0 & 0
+\end{pmatrix}
+\]
+where $E$ is the $2m \times 1$ matrix $E = (0, 0, \dots, 1)^T$, and $0$ represents a block composed of zeros of the appropriate size. Expanding the determinant by minors using the bottom row, we have for $p_2(\nu)$,
+\begin{align*}
+p_2(\nu) &= \det(A_0 - \nu I) \\
+&= -\nu \det(DF(0) - \nu I) \\
+&= -\nu p_1(\nu)
+\end{align*}
+Thus $A(0)$ has the same eigenvalues as $DF(0)$ as well as an additional eigenvalue at 0. The eigenvalues of $DF(0)$ are characterized in Hypothesis \ref{hypeqhyp}, from which (i) follows.
+
+For part (ii) we can verify directly from the form of $A(0)$ that 
+\begin{align*}
+V_0 &= (1/c, 0, \dots, 0, 1)^T \\
+W_0 &= (0, 0, \dots, 0, 1)^T
+\end{align*}
+are eigenvectors of $A(0)$ and $-A(0)^*$ (respectively) corresponding to eigenvalue 0; these have been scaled $V_0$ so that $\langle V_0, W_0 \rangle = 1$. The expression for the projection on the kernel of $A(0)$ in part (iii) comes from Lemma \ref{kernelprojlemma}, since the kernel of $A(0)$ is simple and $\langle W_0, V_0 \rangle = 1$.
+
+\section{Proof of Lemma \ref{nondegenlemma}}
+Since $Q(x)$ is a homoclinic orbit in the intersection of $W^u(0)$ and $W^s(0)$, $\R Q'(0) \subset T_{Q(0)}W^s(0) \cap T_{Q(0)}W^u(0)$. If the intersection were more than one-dimensional, there would exist another exponentially localized solution $V(x) = (v_1, \dots, v_{2m}, v_{2m+1})^T$ to \eqref{vareq2}. It follows that $\tilde{V}(x) = (v_1, \dots, v_{2m})^T$ would be an exponentially localized solution to \eqref{vareq1}, which contradicts \eqref{nondegencond}.
+
+\subsection{Proof of Lemma \ref{varadjsolutions}}
+
+Using \eqref{defAphi}, the linear operator $A(Q(x))^*$ has the form 
+\begin{equation*}
+A(Q(x))^* = 
+\begin{pmatrix}
+0 & 0 & 0 & \dots & 0 & f_{u_1}(Q(x)) - c & 0 \\
+1 & 0 & 0 & \dots & 0 & f_{u_2}(Q(x)) & 0 \\
+0 & 1 & 0 & \dots & 0 & f_{u_3}(Q(x)) & 0 \\
+&& \ddots &&& \vdots \\
+0 & 0 & 0 & \dots & 1 & f_{u_{2m}}(Q(x)) & 0 \\
+0 & 0 & 0 & \dots & 0 & 1 & 0 \\
+\end{pmatrix}
+\end{equation*}
+By inspection, 
+\[
+\Psi^c(x) = W_0 = (0, 0, \dots, 0, 1)^T
+\]
+is a bounded solution. To find $\Psi(x)$, we note that from \eqref{defDF}, the adjoint variational equation takes the block form
+\[
+\begin{pmatrix} \tilde{W}'(x) \\ W_{2m+1}'(x) \end{pmatrix}
+= 
+\begin{pmatrix}DF(Q(x))^* & 0 \\ E & 0 \end{pmatrix}\begin{pmatrix} \tilde{W}(x) \\ W_{2m+1}(x) \end{pmatrix}
+\]
+where $\tilde{W}'(x) = (W_1(x), \dots, W_{2m}(x)) \in \R^{2m}$, $E$ is the $1 \times 2m$ matrix $E = (0, 0, \dots, 1)$, and $0$ represents blocks of zeros of the appropriate size. This can be written as the system of equations
+\begin{align}
+\tilde{W}'(x) &= DF(Q(x))^* \label{tildeWeq1} \\
+W_{2m+1}(x)' &= \tilde{W}_{2m}(x) \label{tildeWeq2}
+\end{align}
+Equation \eqref{tildeWeq1} has a solution $\tilde{W}(x) = 0$, from which it follows that $W_{2m+1}(x)$ is a constant. This is a constant multiple of $\Psi^c(x)$, so we have already taken care of it.
+
+By Lemma \ref{psiform}, equation \eqref{tildeWeq1} has a unique nonzero solution $\tilde{W}(x) = \nabla H(Q(x))$, with $\tilde{W}_{2m}(x)=q'(x)$ and $\tilde{W}(-x) = R\tilde{W}(x)$. Then $W_{2m+1}(x) = q(x) + C$; we can without loss of generality take $C = 0$ since if $C$ is nonzero, we can subtract $C \Psi^c(x)$. Thus we have
+\[
+\Psi(x) = ( \nabla H(Q(x)), q(x) )
+\]
+which is exponentially localized since $q(x)$ is exponentially localized and $H$ is smooth. Since $q(x)$ is an even function, we have the symmetry relation $\Psi(-x) = R \Psi(x)$.
+
+It follows from Lemma \ref{adjointlemma} that any bounded solution to \eqref{adjvareq2} must be perpendicular to $\R Q'(0) \oplus Y^+ \oplus Y^-$ at $x = 0$. In particular, this holds for $\Psi(0)$ and $\Psi^c(0)$. Since $S_1 = \R Q'(0) \oplus Y^+ \oplus Y^-$ is a $(2m-1)-$dimensional subspace of $\R^{2m+1}$ and $S_2 = \Psi(0) \oplus \Psi^c(0)$ is a $2-$dimensional subspace of $\R^{2m+1}$ which is perpendicular to $S_1$, it follows that there can be no other bounded, linearly independent solutions to \eqref{adjvareq2}.
+
+\iffulldocument\else
+	\bibliographystyle{amsalpha}
+	\bibliography{thesis2.bib}
+\fi
+
+\end{document}
